@@ -1,0 +1,11 @@
+{
+  "verbose": false,
+  "ignore": [
+    "public/",
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "env": {
+    "OBSERVER_MONGODB_CONNECTION_STRING": "mongodb://localhost:27017/observer"
+  }
+}

@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    title="Observer" + (token ? ' - ' + token.token : '')
+    link(rel='stylesheet', href='/assets/css/site.css')
+    script(src='/assets/js/jquery-2.1.1.min.js')
+    script(src='/assets/js/site.js')
+  body
+    h1 Observer
+
+    p Token: #{token.token}
+    p Created: #{token.created}
+
+    if token.description
+      p
+        a(class='edit-description no-link-faky', href='javascript:;', data-text=token.description, data-token=token.token) #{token.description}
+    else
+      p
+        a(class='edit-description', href='javascript:;', data-text='', data-token=token.token) No description is set. Click to edit.
+
+    if token.expire
+      p
+        a(class='edit-expiration no-link-faky', href='javascript:;', data-date=token.expire.toString(), data-token=token.token) Expires: #{token.expire}
+    else
+      p
+        a(class='edit-expiration', href='javascript:;', data-date='', data-token=token.token) No expiration is set. Click to edit.
+
+    each entry in entries
+      .wrapper
+        .created #{entry.created}
+        .type Data Type: #{entry.type}
+        .data #{entry.data}

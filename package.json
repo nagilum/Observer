@@ -1,0 +1,28 @@
+{
+  "name": "Observer",
+  "version": "0.0.1",
+  "description": "API for remote logging.",
+  "readmeFilename": "README.md",
+  "homepage": "https://obsrv.us",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": {
+    "name": "Stian Hanger",
+    "email": "pdnagilum@gmail.com",
+    "url": "http://www.shanger.me/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nagilum/observer"
+  },
+  "dependencies": {
+    "async": ">=0.8.0",
+    "body-parser": ">=1.2.0",
+    "crypto": ">=0.0.3",
+    "express": ">=4.2.0",
+    "jade": ">=1.5.0",
+    "mongodb": ">=1.4.4"
+  }
+}

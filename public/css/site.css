@@ -1,0 +1,20 @@
+a.no-link-faky {
+  color: #000;
+  text-decoration: none;
+}
+
+div.wrapper {
+  clear: both;
+  overflow: auto;
+}
+  div.wrapper div.created {
+    clear: right;
+    float: left;
+    padding-right: 20px;
+  }
+  div.wrapper div.type {
+    float: left;
+  }
+  div.wrapper div.data {
+    float: right;
+  }
