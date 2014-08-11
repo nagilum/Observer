@@ -404,7 +404,10 @@ app.post('/api/entry', function (req, res, next) {
     token:   req.body.token,
     created: new Date(),
     data:    req.body.payload,
-    type:    req.body.type
+    type:    req.body.type,
+    length:  req.body.length,
+    logged:  req.body.logged,
+    message: req.body.message
   },
   {
     w: 1

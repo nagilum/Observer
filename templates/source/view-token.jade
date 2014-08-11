@@ -27,6 +27,9 @@ html(lang="en")
 
     each entry in entries
       .wrapper
-        .created #{entry.created}
+        .created Received: #{entry.created}
+        .logged Logged: #{entry.logged}
         .type Data Type: #{entry.type}
+        .length Length: #{entry.length}
         .data #{entry.data}
+        .message #{entry.message}
