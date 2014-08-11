@@ -441,7 +441,10 @@ app.delete('/api/entry', function (req, res, next) {
 });
 
 // We're done setting up all the stuff, now we wait, in the shadows.
-var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
+var ip = process.env.OPENSHIFT_NODEJS_IP,
     lp = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-app.listen(lp, ip);
+if (ip)
+  app.listen(lp, ip);
+else
+  app.listen(lp);
