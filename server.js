@@ -42,7 +42,7 @@ async.waterfall(
         });
       }
       else {
-        cb('Required environmental variable OBSERVER_MONGODB_CONNECTION_STRING is missing.');
+        cb(new Error('Required environmental variable OBSERVER_MONGODB_CONNECTION_STRING is missing.'));
       }
     },
 
