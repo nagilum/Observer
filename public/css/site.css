@@ -3,18 +3,21 @@ a.no-link-faky {
   text-decoration: none;
 }
 
-div.wrapper {
-  clear: both;
-  overflow: auto;
+body {
+  padding: 1em;
 }
-  div.wrapper div.created {
-    clear: right;
-    float: left;
-    padding-right: 20px;
-  }
-  div.wrapper div.type {
-    float: left;
-  }
-  div.wrapper div.data {
-    float: right;
-  }
+
+.navbar-nav input[type=text] {
+  padding: 13px 0;
+}
+.navbar-nav input[type=button] {
+  padding: 13px 0;
+}
+
+h1 {
+  background-image: url(/assets/gfx/icon-32.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  margin: 0 0 3rem 0;
+  padding: 0 0 0 40px;
+}

@@ -2,34 +2,32 @@ doctype html
 html(lang="en")
   head
     title="Observer" + (token ? ' - ' + token.token : '')
+    meta(name='viewport', content='width=device-width')
+    link(rel='icon', href='/assets/gfx/icon-16.png', type='image/png')
+    link(rel='stylesheet', href='/assets/css/bootstrap.3.2.0.min.css')
+    link(rel='stylesheet', href='/assets/css/bootstrap.3.2.0-theme.min.css')
     link(rel='stylesheet', href='/assets/css/site.css')
     script(src='/assets/js/jquery-2.1.1.min.js')
     script(src='/assets/js/site.js')
   body
-    h1 Observer
+    h1
+      a(href='/') Observer
 
-    p Token: #{token.token}
-    p Created: #{token.created}
+    p
+      | Use this thoken to log to this view:
+      | <strong>#{token.token}</strong>
 
-    if token.description
-      p
-        a(class='edit-description no-link-faky', href='javascript:;', data-text=token.description, data-token=token.token) #{token.description}
-    else
-      p
-        a(class='edit-description', href='javascript:;', data-text='', data-token=token.token) No description is set. Click to edit.
+    .navbar.navbar-default
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/view/#{token.token}') Created: #{token.created}
+          li
+            if token.description
+              a(class='edit-description no-link-faky', href='javascript:;', data-text=token.description, data-token=token.token) #{token.description}
+            else
+              a(class='edit-description', href='javascript:;', data-text='', data-token=token.token) No description is set. Click to edit.
 
-    if token.expire
-      p
-        a(class='edit-expiration no-link-faky', href='javascript:;', data-date=token.expire.toString(), data-token=token.token) Expires: #{token.expire}
-    else
-      p
-        a(class='edit-expiration', href='javascript:;', data-date='', data-token=token.token) No expiration is set. Click to edit.
-
-    each entry in entries
-      .wrapper
-        .created Received: #{entry.created}
-        .logged Logged: #{entry.logged}
-        .type Data Type: #{entry.type}
-        .length Length: #{entry.length}
-        .data #{entry.data}
-        .message #{entry.message}
+    ul.list-group
+      each entry in entries
+        li.list-group-item <small>Received:</small> #{entry.created} &middot;&middot;&middot; <small>Logged:</small> #{entry.logged} &middot;&middot;&middot; <small>Data-Type:</small> #{entry.type} &middot;&middot;&middot; <small>Length:</small> #{entry.length} <br> #{entry.data}

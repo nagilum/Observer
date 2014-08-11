@@ -34,7 +34,7 @@ function createNewTokenAndRedirect() {
  *   The clicked link.
  */
 function replaceDescriptionWithTextbox($a) {
-  var $p = $a.parent(),
+  var $i = $a.parent(),
       $t = $('<input>')
              .attr('type', 'text')
              .attr('value', $a.attr('data-text')),
@@ -48,7 +48,7 @@ function replaceDescriptionWithTextbox($a) {
 
   $a.remove();
 
-  $p
+  $i
     .append($t)
     .append($s);
 }
@@ -61,8 +61,8 @@ function replaceDescriptionWithTextbox($a) {
  */
 function saveDescriptionAndReinsertLink($b) {
   var token       = $b.attr('data-token'),
-      $p          = $b.parent(),
-      $t          = $p.find('input[type=text]'),
+      $i          = $b.parent(),
+      $t          = $i.find('input[type=text]'),
       description = $.trim($t.val()),
       $a          = $('<a>')
                       .attr('href', 'javascript:;')
@@ -70,23 +70,27 @@ function saveDescriptionAndReinsertLink($b) {
                       .attr('data-token', token)
                       .addClass('edit-description')
                       .addClass('no-link-faky')
-                      .text((description === '' ? 'No description is set. Click to edit.' : description));
+                      .text((description === '' ? 'No description is set. Click to edit.' : description))
+                      .click(function () {
+                        replaceDescriptionWithTextbox($(this));
+                      });
+  if (description !== '') {
+    $.ajax({
+      type: 'PUT',
+      url: '/api/token',
+      data: {
+        token: token,
+        description: description
+      },
+      success: function (res) {
+        $b.remove();
+        $t.remove();
 
-  $.ajax({
-    type: 'PUT',
-    url: '/api/token',
-    data: {
-      token: token,
-      description: description
-    },
-    success: function (res) {
-      $b.remove();
-      $t.remove();
-
-      $p.append($a);
-    },
-    error: function () {
-      alert('Coult not save description!');
-    }
-  })
+        $i.append($a);
+      },
+      error: function () {
+        alert('Coult not save description!');
+      }
+    });
+  }
 }

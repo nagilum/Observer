@@ -2,9 +2,18 @@ doctype html
 html(lang="en")
   head
     title="Observer"
+    meta(name='viewport', content='width=device-width')
+    link(rel='icon', href='/assets/gfx/icon-16.png', type='image/png')
+    link(rel='stylesheet', href='/assets/css/bootstrap.3.2.0.min.css')
+    link(rel='stylesheet', href='/assets/css/bootstrap.3.2.0-theme.min.css')
+    link(rel='stylesheet', href='/assets/css/site.css')
     script(src='/assets/js/jquery-2.1.1.min.js')
     script(src='/assets/js/site.js')
   body
-    h1 Observer
+    h1
+      a(href='/') Observer
+
+    p Observer is a logging tool for centralized log-view. To get started, just click the button below which will create a new token for you to log too.
+
     p
-      a(href='javascript:;', class='create-new-token') Create New Token
+      a(href='javascript:;', class='create-new-token btn btn-success') Create New Token
