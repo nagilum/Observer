@@ -42,7 +42,7 @@ async.waterfall(
         });
       }
       else {
-        cb('Required environmental variable OBSERVER_MONGODB_CONNECTION_STRING is missing.');
+        cb(new Error('Required environmental variable OBSERVER_MONGODB_CONNECTION_STRING is missing.'));
       }
     },
 
@@ -441,10 +441,7 @@ app.delete('/api/entry', function (req, res, next) {
 });
 
 // We're done setting up all the stuff, now we wait, in the shadows.
-var ip = process.env.OPENSHIFT_NODEJS_IP,
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     lp = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-if (ip)
-  app.listen(lp, ip);
-else
-  app.listen(lp);
+app.listen(lp, ip);
